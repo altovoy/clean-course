@@ -1,11 +1,11 @@
 (() => {
   // arreglo de temperaturas celsius
   const arrayOfNums = [33.6, 12.34];
-  const celsiusTemperatures = [33.6, 12.34];
+  const numbers = [33.6, 12.34];
 
   // Dirección ip del servidor
   const ip = "123.123.123.123";
-  const serverIp = "123.123.123.123";
+  const ipAddress = "123.123.123.123";
 
   // Listado de usuarios
   const people = [
