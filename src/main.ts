@@ -1,5 +1,5 @@
 import "./style.css";
-import "./clean-code/06-classes";
+import "./clean-code/07-single-responsability-task";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
