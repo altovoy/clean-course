@@ -7,15 +7,27 @@ class Product {
     public size: Size = ""
   ) {}
 
+  verifyProductProperties() {
+    for (const key in this) {
+      const currentValue: any = this[key];
+      switch (typeof currentValue) {
+        case "string":
+          if (currentValue.length <= 0) throw Error(`${key} is empty`);
+          break;
+        case "number":
+          if (currentValue <= 0) throw Error(`${key} is zero`);
+          break;
+      }
+    }
+  }
+
   toString() {
-    if (this.name.length <= 0) throw Error("Name is empty");
-    if (this.price <= 0) throw Error("Price is zero");
-    if (this.size.length <= 0) throw Error("Size is empty");
+    this.verifyProductProperties();
     return `${this.name} (${this.price}), ${this.size}`;
   }
 }
 
 (() => {
-  const bluePants = new Product("Blue large pants");
+  const bluePants = new Product("Blue large pants", 10, "S");
   console.log(bluePants.toString());
 })();
