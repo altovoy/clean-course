@@ -1,4 +1,6 @@
 (() => {
+  // Priorizar la composición frente a la herencia
+
   type Gender = "M" | "F";
 
   interface PersonProps {
@@ -22,18 +24,14 @@
   interface UserProps {
     email: string;
     role: string;
-    name: string;
-    gender: Gender;
-    birthdate: Date;
   }
 
-  class User extends Person {
+  class User {
     public lastAccess: Date;
     public email: string;
     public role: string;
 
-    constructor({ email, role, name, gender, birthdate }: UserProps) {
-      super({ name, gender, birthdate });
+    constructor({ email, role }: UserProps) {
       this.lastAccess = new Date();
       this.email = email;
       this.role = role;
@@ -41,6 +39,20 @@
 
     checkCredentials() {
       return true;
+    }
+  }
+
+  interface SettingsProps {
+    workingDirectory: string;
+    lastOpenFolder: string;
+  }
+
+  class Settings {
+    public workingDirectory: string;
+    public lastOpenFolder: string;
+    constructor({ workingDirectory, lastOpenFolder }: SettingsProps) {
+      this.workingDirectory = workingDirectory;
+      this.lastOpenFolder = lastOpenFolder;
     }
   }
 
@@ -54,9 +66,11 @@
     birthdate: Date;
   }
 
-  class UserSettings extends User {
-    public workingDirectory: string;
-    public lastOpenFolder: string;
+  class UserSettings {
+    public person: Person;
+    public user: User;
+    public settings: Settings;
+
     constructor({
       workingDirectory,
       lastOpenFolder,
@@ -66,9 +80,9 @@
       gender,
       birthdate,
     }: UserSettingsProps) {
-      super({ email, role, name, gender, birthdate });
-      this.workingDirectory = workingDirectory;
-      this.lastOpenFolder = lastOpenFolder;
+      this.person = new Person({ name, gender, birthdate });
+      this.user = new User({ email, role });
+      this.settings = new Settings({ workingDirectory, lastOpenFolder });
     }
   }
 
@@ -78,6 +92,13 @@
     birthdate: new Date("2000-01-28"),
   });
   console.log({ person });
+
+  const settings = new Settings({
+    workingDirectory: "/user/home",
+    lastOpenFolder: "/home",
+  });
+
+  console.log({ settings });
 
   const userSettings = new UserSettings({
     workingDirectory: "/user/home",
