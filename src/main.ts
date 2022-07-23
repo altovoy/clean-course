@@ -1,5 +1,5 @@
 import "./style.css";
-import "./clean-code/code-smells/02-singleton";
+import "./code-smells/02-singleton";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
