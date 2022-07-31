@@ -1,0 +1,7 @@
+/*
+ Single responsability. Desing components exposed only to one change source
+ O
+ L
+ I
+ D
+*/
