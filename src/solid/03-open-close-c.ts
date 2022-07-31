@@ -1,5 +1,5 @@
 export class HttpClient {
-  async get(url: string) {
+  async get(url: string): Promise<{ data: any; status: number }> {
     const response = await fetch(url);
     const data = response.json();
     const status = response.status;
