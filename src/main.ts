@@ -1,5 +1,5 @@
 import "./style.css";
-import "./solid/02-srp";
+import "./solid/03-open-close-a";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 

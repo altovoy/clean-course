@@ -1,6 +1,6 @@
 /*
  Single responsability. Desing components exposed only to one change source
- O
+ Open/Closed: open to extention but open for modification
  L
  I
  D
